@@ -90,7 +90,7 @@ public class AddressBook {
     private static final String MESSAGE_STORAGE_FILE_CREATED = "Created new empty storage file: %1$s";
     private static final String MESSAGE_WELCOME = "Welcome to your Address Book!";
     private static final String MESSAGE_USING_DEFAULT_FILE = "Using default storage file : " + DEFAULT_STORAGE_FILEPATH;
-
+    private static final String MESSAGE_HELLO = "Hello! Nice to meet you!";
     // These are the prefix strings to define the data type of a command parameter
     private static final String PERSON_DATA_PREFIX_PHONE = "p/";
     private static final String PERSON_DATA_PREFIX_EMAIL = "e/";
@@ -132,6 +132,8 @@ public class AddressBook {
     private static final String COMMAND_EXIT_WORD = "exit";
     private static final String COMMAND_EXIT_DESC = "Exits the program.";
     private static final String COMMAND_EXIT_EXAMPLE = COMMAND_EXIT_WORD;
+
+    private static final String COMMAND_GREETING = "hello";
 
     private static final String DIVIDER = "===================================================";
 
@@ -381,11 +383,18 @@ public class AddressBook {
             return executeClearAddressBook();
         case COMMAND_HELP_WORD:
             return getUsageInfoForAllCommands();
+        case COMMAND_GREETING:
+            return sayHello();
         case COMMAND_EXIT_WORD:
             executeExitProgramRequest();
+
         default:
             return getMessageForInvalidCommandInput(commandType, getUsageInfoForAllCommands());
         }
+    }
+
+    private static String sayHello() {
+        return String.format(MESSAGE_HELLO);
     }
 
     /**
